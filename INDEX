@@ -1,0 +1,30 @@
+Ops.Sample              Basic Operations for Sample objects 
+Sample                  Sample Objects 
+Sine                    Create Sample Objects for the Basic waveforms 
+WavPlayer               Set or Get the Command for Playing WAV Files 
+appendSample            Append Samples 
+bits                    Bits per Sample 
+center                  Center a Sample Object. 
+channels                Number of Channels of a Sample Object 
+cutSample               Cut Sample Objects 
+cutSampleEnds           Prepare Sample Object for appendSample 
+duration                Duration of a Sample Object 
+fitSampleParameters     Adjust Parameters of Two Sample Objects. 
+left                    Extract one Channel from a Stereo Sample 
+loadSample              Load a WAV File from Disk 
+mirror                  Mirror a Stereo Sample 
+noSilence               Cut Off Silence from a Sample Object 
+normalize               Rescale the Range of a Sample to [-1,1] 
+nullSample              The NULL Sample Object 
+panorama                Narrow the Panorama of a Stereo Sample 
+pitch                   Pitch a Sample Object 
+play                    Play a Sample Object or a WAV File
+plot.Sample             Plot a Sample Object 
+print.Sample            Print a Sample Object 
+rate                    The Sampling Rate 
+reverse                 Play a Sample Object Backwards 
+sampleLength            Length of a Sample Object 
+saveSample              Save a Sample Object as a WAV File 
+sound                   The Waveform Matrix of a Sample Object 
+stereo                  Create a Stereo Sample Object from Two Mono
+                        Samples 
