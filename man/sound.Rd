@@ -6,11 +6,11 @@
   Get or set the waveform matrix of a Sample object or a wav file.
 }
 \usage{sound(s)
-sound(s) <- waveform
+sound(s) <- value
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{waveform}{ a \code{channels(s)} x \code{sampleLength(s)} matrix of doubles. }
+  \item{value}{ a \code{channels(s)} x \code{sampleLength(s)} matrix of doubles. }
 }
 \details{
 The replacement form can be used to reset the waveform of a sample object. Here, filenames are not accepted for code{s}.
@@ -28,8 +28,9 @@ The waveform of a Sample object might exceed this interval during calculations. 
 
 \seealso{\code{\link{as.Sample}}}
 
-\examples{\dontrun{s <- Sine(440,1,channels=2)  # stereo sine wave
+\examples{\dontrun{
+s <- Sine(440,1,channels=2)  # stereo sine wave
 sound(s)[2,] <- sound(s)[2,]*seq(1,0,length=sampleLength(s))
-play(s)  # right channel fades to zero}
-}
+play(s)  # right channel fades to zero
+}}
 \keyword{ attribute }

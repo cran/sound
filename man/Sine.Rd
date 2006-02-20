@@ -33,12 +33,13 @@ Noise(dur, rate=44100, bits=16, channels=1)
 
 \seealso{ \code{\link{as.Sample}}, \code{\link{loadSample}}, \code{\link{nullSample}} }
 
-\examples{\dontrun{s1 <- Sine(440,1)
+\examples{\dontrun{
+s1 <- Sine(440,1)
 play(s1)
 
 s2 <- Sawtooth(440,1)
 play(s2)
 
-play(Noise(1))}
-}
+play(Noise(1))
+}}
 \keyword{ sysdata }

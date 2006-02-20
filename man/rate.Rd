@@ -7,12 +7,12 @@
   Get or set the sampling rate (number of samples per second) of a Sample object or a wav file.
 }
 \usage{rate(s)
-rate(s) <- r
-setRate(s,r)
+rate(s) <- value
+setRate(s,value)
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{r}{ an integer between 1000 and 48000 giving the sampling rate. }
+  \item{value}{ an integer between 1000 and 48000 giving the sampling rate. }
 }
 \details{
 The replacement form can be used to reset the sampling rate. Here, filenames are not accepted.
@@ -33,12 +33,13 @@ Future versions may use a different algorithm for sampling rate conversion to ac
 
 \seealso{ \code{\link{fitSampleParameters}}, \code{\link{pitch}} }
 
-\examples{\dontrun{s <- Sine(440,1,rate=44100)
+\examples{\dontrun{
+s <- Sine(440,1,rate=44100)
 rate(s)  # 44100
 play(s)
 print(s)
 rate(s) <- 8000
 play(s)  # s has worse quality now (noise and additional high frequencies)
-print(s) # but uses less memory}
-}
+print(s) # but uses less memory
+}}
 \keyword{ attribute }

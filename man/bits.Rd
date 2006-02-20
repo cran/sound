@@ -7,12 +7,12 @@
   Get or set the \code{bits} parameter (the sampling quality) of a Sample object or a wav file.
 }
 \usage{bits(s)
-bits(s) <- b
-setBits(s,b)
+bits(s) <- value
+setBits(s,value)
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{b}{ the number of bits per sample, 8 or 16. }
+  \item{value}{ the number of bits per sample, 8 or 16. }
 }
 \details{
 The replacement form can be used to reset the sampling quality of a Sample object, that is the number of bits per sample (8 or 16). Here, filenames are not accepted.
@@ -30,12 +30,13 @@ An 8 bit sample needs only half the disk space but has less quality.
 
 \seealso{ \code{\link{fitSampleParameters}} }
 
-\examples{\dontrun{s <- Sine(20000,1,rate=44100,bits=16)
+\examples{\dontrun{
+s <- Sine(20000,1,rate=44100,bits=16)
 play(s)
 print(s)
 bits(s) <- 8
 play(s)  # now worse quality
 print(s) # but less disk space
-play(setBits(s,16)) # now better quality again, since waveform data was not changed.}
-}
+play(setBits(s,16)) # now better quality again, since waveform data was not changed.
+}}
 \keyword{ attribute }

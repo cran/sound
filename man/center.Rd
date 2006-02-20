@@ -19,7 +19,8 @@ For a stereo Sample object, both channels are treated separately.
 
 \seealso{ \code{\link{normalize}} }
 
-\examples{\dontrun{x <- seq(0,50*pi,length=10000)
+\examples{\dontrun{
+x <- seq(0,50*pi,length=10000)
 waveform <- (sin(x))^2 + .6*cos(x/2)^2
 s <- as.Sample(waveform,44100,16)
 plot(s) # nice idea, but wrong range for a sample
@@ -29,6 +30,6 @@ plot(s)  # now zero is the mean
 play(s)  # sounds good, but too quiet
 s <- normalize(s)
 plot(s)  # this looks like a perfect sample!
-play(s)  # e voila!}
-}
+play(s)  # e voila!
+}}
 \keyword{ manip }

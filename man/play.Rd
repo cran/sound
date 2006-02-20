@@ -19,7 +19,8 @@ If \code{s} is a Sample object, it will be saved into a temporary folder before 
 
 \author{ Matthias Heymann }
 
-\examples{\dontrun{s <- Sine(440,1)
-play(s)}
-}
+\examples{\dontrun{
+s <- Sine(440,1)
+play(s)
+}}
 \keyword{ IO }

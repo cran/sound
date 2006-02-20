@@ -20,11 +20,12 @@
 
 \seealso{ \code{\link{Silence}}}
 
-\examples{\dontrun{scale <- 2^(seq(0,1,length=13))[c(1,3,5,6,8,10,12,13)]
+\examples{\dontrun{
+scale <- 2^(seq(0,1,length=13))[c(1,3,5,6,8,10,12,13)]
 base <- 440
 s <- nullSample()
 for (f in scale)
   s <- appendSample(s,Sine(f*base,1))
-play(s)}
-}
+play(s)
+}}
 \keyword{ sysdata }

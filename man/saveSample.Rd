@@ -15,7 +15,8 @@
 
 \seealso{ \code{\link{loadSample}} }
 
-\examples{\dontrun{s <- Sine(440,1)
-saveSample(s,"sine.wav")}
-}
+\examples{\dontrun{
+s <- Sine(440,1)
+saveSample(s,"sine.wav")
+}}
 \keyword{ file }

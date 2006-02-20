@@ -7,12 +7,12 @@
   Get or set the number of channels of a Sample object or a wav file.
 }
 \usage{channels(s)
-channels(s) <- c
-setChannels(s,c)
+channels(s) <- value
+setChannels(s,value)
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{c}{ 1 for mono, or 2 for stereo. }
+  \item{value}{ 1 for mono, or 2 for stereo. }
 }
 \details{
 The replacement form can be used to reset the number of channels of a Sample object (here, filenames are not accepted).
@@ -28,10 +28,11 @@ If a mono sample is transformed into a stereo sample, each channel of the stereo
 
 \seealso{ \code{\link{fitSampleParameters}} }
 
-\examples{\dontrun{s <- stereo(Sine(440,1),Sine(220,1))
+\examples{\dontrun{
+s <- stereo(Sine(440,1),Sine(220,1))
 channels(s)  # 2
 play(s)
 channels(s) <- 1  # now a mono sample
-play(s)}
-}
+play(s)
+}}
 \keyword{ attribute } 

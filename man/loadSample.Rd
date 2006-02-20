@@ -22,7 +22,9 @@ All kinds of wav files are supported: mono / stereo, 8 / 16 bits per sample, 100
 
 \seealso{  \code{\link{saveSample}}, \code{\link{as.Sample}} }
 
-\examples{\dontrun{s <- loadSample("soundfile.wav")
-play(s)}}
+\examples{\dontrun{
+s <- loadSample("soundfile.wav")
+play(s)
+}}
 
 \keyword{ file }

@@ -22,12 +22,13 @@ For stereo samples, it is checked if the values of both channels are silence bef
 
 \seealso{ \code{\link{cutSample}} }
 
-\examples{\dontrun{s <- Sine(440,5)
+\examples{\dontrun{
+s <- Sine(440,5)
 sound(s) <- sound(s)*matrix(seq(1,0,length=5*44100),nrow=1)
 sampleLength(s)
 play(s) # fade out
 s <- noSilence(s,level=.05)
 sampleLength(s)  # s is shorter now
-play(s)    # although you don't hear that the end is missing}
-}
+play(s)    # although you don't hear that the end is missing
+}}
 \keyword{ manip }

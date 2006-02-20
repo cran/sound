@@ -2,13 +2,13 @@
 \alias{WavPlayer}
 \alias{findWavPlayer}
 \alias{setWavPlayer}
-\title{ Set or Get the Command for Playing WAV Files }
+\title{ Set or Get the System Command for Playing WAV Files }
 \description{
   \code{findWavPlayer} returns the most common system commands on your OS for playing wav files.
 
   \code{WavPlayer} returns the command that is currently used by \code{\link{play}}.
 
-  \code{setWavPlayer} is used to define the command that is used by \code{\link{play}}.
+  \code{setWavPlayer} is used to define the command to be used by \code{\link{play}}.
 }
 \usage{findWavPlayer()
 WavPlayer()
@@ -38,11 +38,12 @@ When \code{setWavPlayer} is called, it tries to play an empty wav file, using th
 
 \seealso{ \code{\link{play}} for playing Sample objects or wav files. }
 
-\examples{\dontrun{setWavPlayer("playwave")
+\examples{\dontrun{
+setWavPlayer("playwave")
 # tries to set the command "playwave wavfile.wav" as the 
 # preference for playing wav files with the play command.
 # If successful,
 WavPlayer()
-# returns the string "playwave" afterwards.}
-}
+# returns the string "playwave" afterwards.
+}}
 \keyword{ sysdata }

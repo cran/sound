@@ -24,11 +24,12 @@ Note that this transformation changes the actual data of the sample. Since pitch
 
 \note{ Future versions of this command may use a different algorithm to increase the quality of the returned sample. }
 
-\examples{\dontrun{s <- Sine(440,1)
+\examples{\dontrun{
+s <- Sine(440,1)
 # Now play it 12 semitones = 1 octave deeper,
 # that is half the frequencies and twice the length,
 # or played at half speed.
 play(pitch(s,-12)) # is the same as...
-play(Sine(220,2))}
-}
+play(Sine(220,2))
+}}
 \keyword{ manip }

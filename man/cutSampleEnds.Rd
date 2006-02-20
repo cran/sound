@@ -22,7 +22,8 @@ Currently, only channel 1 is used to determine which parts to drop. Hence in ste
 
 \seealso{ \code{\link{cutSample}}, \code{\link{appendSample}} }
 
-\examples{\dontrun{s1 <- Sine(440,.01)
+\examples{\dontrun{
+s1 <- Sine(440,.01)
 s2 <- Sine(550,.01)
 s3 <- Sine(660,.01)
 s4 <- Sine(880,.01)
@@ -50,7 +51,7 @@ plot(cutSampleEnds(s1))
 # A similar cuttoff would be made at the beginning
 # of the sample (if it was necessary).
 # Now the two samples fit perfectly (the cut is at x=400):
-plot(appendSample(cutSampleEnds(s1),cutSampleEnds(s2)))}
-}
+plot(appendSample(cutSampleEnds(s1),cutSampleEnds(s2)))
+}}
 
 \keyword{ manip }

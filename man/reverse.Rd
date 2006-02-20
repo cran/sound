@@ -14,9 +14,10 @@
 }
 \author{ Matthias Heymann }
 
-\examples{\dontrun{waveform <- 2*((seq(0,80,length=88200)\%\%1^2)-.5)
+\examples{\dontrun{
+waveform <- 2*((seq(0,80,length=88200)\%\%1^2)-.5)
 s <- as.Sample(waveform,44100,16)
 play(s)
-play(reverse(s)) # now played backwards}
-}
+play(reverse(s)) # now played backwards
+}}
 \keyword{ manip }

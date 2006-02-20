@@ -2,25 +2,34 @@
 \alias{Ops.Sample}
 \alias{sum.Sample}
 \alias{prod.Sample}
-\title{ Basic Operations for Sample objects }
+\alias{+}
+\alias{-}
+\alias{*}
+\alias{/}
+\title{ Basic Operations for Sample Objects }
 \description{
 These functions apply the basic operations pointwise to the waveforms of the samples.
+}
+\synopsis{
+Ops.Sample(s1,s2)
+sum.Sample(s1,s2,...)
+prod.Sample(s1,s2,...)
 }
 \usage{s1 + s2
 s1 - s2
 s1 * s2
 const * s
-s  * const
-s  / const
+s * const
+s / const
 sum.Sample(s1, s2, ...)
 prod.Sample(s1, s2, ...)
 }
 \arguments{
-  \item{s1, s2, \dots}{ Sample objects, or strings giving the name of wav files. }
+  \item{s, s1, s2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }
   \item{const}{ a double. }
 }
 \details{
-The sum of two sample objects corresponds to the sound when both samples are played at a time. The product of two samples causes an effect called ringmodulation, but it can also be used to add some vibrato to a sound (see the examples).
+The sum of two Sample objects corresponds to the sound when both samples are played at a time. The product of two samples causes an effect called ringmodulation, but it can also be used to add some vibrato to a sound (see the examples).
 
 If the samples have different sample parameters (bits, rate and channels), the system uses the command \code{\link{fitSampleParameters}} to adjust them before the waveforms are combined.
 
@@ -37,10 +46,11 @@ In \code{prod} and \code{sum} also the names of wavefiles can be used. Other for
 
 \seealso{ \code{\link{normalize}}, \code{\link{center}} }
 
-\examples{\dontrun{s1 <- Sine(440,1)
+\examples{\dontrun{
+s1 <- Sine(440,1)
 s2 <- Sine(220,1)
 play((s1+s2)/2) # both samples at a time
 
-play(Sine(440,1)*Sine(5,1)) # vibrato}
-}
+play(Sine(440,1)*Sine(5,1)) # vibrato
+}}
 \keyword{ manip }

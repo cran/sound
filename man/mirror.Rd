@@ -19,8 +19,9 @@ If \code{s} is a mono sample, it will be returned as it is.
 
 \seealso{ \code{\link{panorama}} for a command with more parameters, \code{\link{left}} and \code{\link{right}} for access to single channels of a sample. }
 
-\examples{\dontrun{s <- stereo(Sine(440,1),Sine(220,1))
+\examples{\dontrun{
+s <- stereo(Sine(440,1),Sine(220,1))
 play(s)  # higher tone is on the left
-play(mirror(s))  # now higher tone is on the right}
-}
+play(mirror(s))  # now higher tone is on the right
+}}
 \keyword{ manip }

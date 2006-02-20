@@ -1,6 +1,6 @@
 \name{appendSample}
 \alias{appendSample}
-\title{ Append Samples }
+\title{ Append Sample Objects }
 \description{
   Append two or more Sample objects or wav files.
 }
@@ -21,10 +21,11 @@ If the samples have different sample parameters (bits, rate and channels), the c
 
 \code{\link{sum.Sample}} for playing several samples at a time. }
 
-\examples{\dontrun{s1 <- Sine(440,1)
+\examples{\dontrun{
+s1 <- Sine(440,1)
 s2 <- Sine(550,1)
 s3 <- Sine(660,1)
 s4 <- Sine(880,1)
-play(appendSample(s1,s2,s3,s4))}
-}
+play(appendSample(s1,s2,s3,s4))
+}}
 \keyword{ manip }

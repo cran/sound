@@ -20,7 +20,8 @@
 
 \seealso{ \code{\link{rate}}, \code{\link{channels}}, \code{\link{bits}} }
 
-\examples{\dontrun{s1 <- Sine(440,1,rate=22050,channels=1,bits=16)
+\examples{\dontrun{
+s1 <- Sine(440,1,rate=22050,channels=1,bits=16)
 s2 <- Sawtooth(440,1,rate=44100,channels=2,bits=8)
 play(s1)
 play(s2)
@@ -31,6 +32,6 @@ print(t1)
 print(t2)  # both samples have the same parameters now
 play(t1)
 play(t2)   # none of the samples sounds different now,
-           # since only parameters with higher quality were chosen}
-}
+           # since only parameters with higher quality were chosen
+}}
 \keyword{ manip }

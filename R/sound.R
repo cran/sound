@@ -15,10 +15,10 @@ setWavPlayer <- function(command=NULL){
     for (trycommand in command){
       op <- options(warn=2)
       if (trycommand=="mplay32 /play") {
-        status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/data/testsample.wav",sep="")))
+        status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/testsample.wav",sep="")))
       }
       else {
-        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/data/testsample.wav",sep="")))
+        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep="")))
       }
       options(op)
       if (!inherits(status,"try-error")) {
@@ -74,7 +74,7 @@ as.Sample <- function(sound,rate=44100,bits=16){
     stop("Parameter 'bits' must be 8 or 16.")
   if (is.null(dim(sound)))
     sound <- matrix(sound,nrow=1)
-  if (dim(sound)>2){
+  if (dim(sound)[1]>2){
     warning("Argument 'sound' has more than two rows. Only the first two are used.")
     sound <- sound[1:2,]
   }
@@ -189,16 +189,16 @@ play <- function(s,stay=FALSE,command=WavPlayer()){
   UseMethod("play")
 }
 
-play.default <- function(filename,stay=FALSE,command=WavPlayer()){
+play.default <- function(s,stay=FALSE,command=WavPlayer()){
   if (is.null(command)) {
     stop(paste("No wav file player selected.\n",
                "To play sounds you need to select a wav file player first.\n",
                "For more information type '?setWavPlayer'.", sep=""))
   }
-  sampletest <- is.Sample(filename,argname="")
+  sampletest <- is.Sample(s,argname="")
   if (!sampletest$test) stop(sampletest$error)
   if (stay==FALSE && command=="mplay32 /play") command <- paste(command,"/close")
-  system(paste(command,filename))
+  system(paste(command,s))
   invisible(NULL)
 }
 
@@ -420,53 +420,53 @@ duration <- function(s) {
   return(s)
 }
 
-setBits <- function(s,b){
+setBits <- function(s,value){
   sampletest <- is.Sample(s)
   if (!sampletest$test) stop(sampletest$error)
-  if (mode(b)!="numeric" || (b!=8 && b!=16))
+  if (mode(value)!="numeric" || (value!=8 && value!=16))
     stop("Number of bits must be 8 or 16.")
   if (is.null(class(s))) s <- loadSample(s,filecheck=FALSE)
-  bits(s) <- b
+  bits(s) <- value
   return(s)
 }
 
-setRate <- function(s,r){
+setRate <- function(s,value){
   sampletest <- is.Sample(s)
   if (!sampletest$test) stop(sampletest$error)
-  if (mode(r)!="numeric" || r<1000 || r>48000)
+  if (mode(value)!="numeric" || value<1000 || value>48000)
     stop("Rate must be a number between 1000 and 48000.")
   if (is.null(class(s))) s <- loadSample(s,filecheck=FALSE)
-  rate(s) <- r
+  rate(s) <- value
   return(s)
 }
 
-setChannels <- function(s,c){
+setChannels <- function(s,value){
   sampletest <- is.Sample(s)
   if (!sampletest$test) stop(sampletest$error)
-  if (mode(c)!="numeric" || !(c==1 || c==2))
+  if (mode(value)!="numeric" || !(value==1 || value==2))
     stop("Number of channels must be 1 or 2.")
   if (is.null(class(s))) s <- loadSample(s,filecheck=FALSE)
-  channels(s) <- c
+  channels(s) <- value
   return(s)
 }
 
-setSampleLength <- function(s,l){
+setSampleLength <- function(s,value){
   sampletest <- is.Sample(s)
   if (!sampletest$test) stop(sampletest$error)
-  if (mode(l)!="numeric" || l<1)
+  if (mode(value)!="numeric" || value<1)
     stop("Sample length must be a positive integer.")
   if (is.null(class(s))) s <- loadSample(s,filecheck=FALSE)
-  sampleLength(s) <- l
+  sampleLength(s) <- value
   return(s)
 }
 
-setDuration <- function(s,d){
+setDuration <- function(s,value){
   sampletest <- is.Sample(s)
   if (!sampletest$test) stop(sampletest$error)
-  if (mode(d)!="numeric" || d<=0)
+  if (mode(value)!="numeric" || value<=0)
     stop("Duration must be a positive number.")
   if (is.null(class(s))) s <- loadSample(s,filecheck=FALSE)
-  duration(s) <- d
+  duration(s) <- value
   return(s)
 }
 

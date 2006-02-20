@@ -22,12 +22,13 @@ If \code{pan<0}, the left and the right channel are interchanged afterwards.
 
 \seealso{ \code{\link{mirror}} for \code{pan=-50}, \code{\link{left}} and \code{\link{right}} for access to single channels of the sample. }
 
-\examples{\dontrun{s <- stereo(Sine(440,1),Sine(330,1))
+\examples{\dontrun{
+s <- stereo(Sine(440,1),Sine(330,1))
 play(s)
 play(panorama(s,30))  # now right and left tones are closer to the center
 play(panorama(s,10))  # now even closer
 play(panorama(s,0))   # now both at the center, the same as setChannels(s,1)
 play(panorama(s,-30)) # again wider, but both sides switched
-play(panorama(s,-50)) # the same as mirror(s)}
-}
+play(panorama(s,-50)) # the same as mirror(s)
+}}
 \keyword{ manip }

@@ -19,10 +19,11 @@ Use this command before saving or playing a Sample object to avoid cracks in the
 
 \seealso{ \code{\link{Ops.Sample}}, \code{\link{center}} }
 
-\examples{\dontrun{s <- .6*Sine(440,1)
+\examples{\dontrun{
+s <- .6*Sine(440,1)
 plot(s)
 plot(normalize(s)) # now it uses the full range
 play(s)
-play(normalize(s)) # this one is louder}
-}
+play(normalize(s)) # this one is louder
+}}
 \keyword{ manip }

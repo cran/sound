@@ -21,11 +21,12 @@ If \code{s} is a mono sample, it will be returned as it is.
 
 \seealso{ \code{\link{stereo}} for creating a stereo Sample object from two mono samples. }
 
-\examples{\dontrun{sLeft <- Sine(440,1)
+\examples{\dontrun{
+sLeft <- Sine(440,1)
 sRight <- Sine(220,1)
 s <- stereo(sLeft,sRight)
 play(s)
 play(left(s))  # only the left channel
-play(right(s)) # only the right channel}
-}
+play(right(s)) # only the right channel
+}}
 \keyword{ manip }

@@ -14,8 +14,9 @@
 
 \seealso{ \code{\link{plot.Sample}} for plotting the waveform of a sample. }
 
-\examples{\dontrun{s <- Sine(440,1)
-print(s)}
-}
+\examples{\dontrun{
+s <- Sine(440,1)
+print(s)
+}}
 
 \keyword{ print }

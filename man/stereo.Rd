@@ -25,9 +25,10 @@ If the samples have different sample parameters (bits, rate and channels), the c
 
 \seealso{ \code{\link{left}}, \code{\link{right}}, \code{\link{as.Sample}}, \code{\link{panorama}} }
 
-\examples{\dontrun{sLeft <- Sine(440,1)
+\examples{\dontrun{
+sLeft <- Sine(440,1)
 sRight <- Sine(220,1)
 s <- stereo(sLeft,sRight)
-play(s) }
-}
+play(s)
+}}
 \keyword{ manip }
