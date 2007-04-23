@@ -18,7 +18,8 @@ setWavPlayer <- function(command=NULL){
         status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/testsample.wav",sep="")))
       }
       else {
-        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep="")))
+        status <- try(system(paste(trycommand," ",.path.package(package
+  = "sound"),"/testsample.wav",sep=""), ignore = TRUE))
       }
       options(op)
       if (!inherits(status,"try-error")) {
@@ -28,7 +29,7 @@ setWavPlayer <- function(command=NULL){
     }
     singplur <- sum(length(command)>1)+1
     if (is.null(flag)) {
-      warning(paste("======================================================================",
+      warning(paste("======================================================================\n",
                     "Couldn't run the default wav file play commands for your system.\n",
                     "Make sure they can be used as 'command soundfile.wav' and\n",
                     "then type 'setWavPlayer()'.\n",
@@ -53,9 +54,11 @@ WavPlayer <- function() {
 
 findWavPlayer <- function(){
   command <- switch(R.Version()$os,
-	            "linux-gnu" = c("play","playwave"),
- 	            "Win32"     = "mplay32 /play",
-                    "mingw32"   = "mplay32 /play",
+	            "linux-gnu"   = c("play","playwave"),
+ 	            "Win32"       = "mplay32 /play",
+                    "mingw32"     = "mplay32 /play", 
+		    "darwin8.6.0" = "open -a 'QuickTime Player'",
+		    "darwin8.6.1" = "open -a 'QuickTime Player'",
                     default     = NULL)
   if (is.null(command)) warning("No standard wav player known for your system.\n")
   return(command)
@@ -115,17 +118,24 @@ loadSample <- function(filename,filecheck=TRUE){
   }
 
   fileR <- file(filename,"rb")
-              readBin(fileR,"integer",n=22,size=1)
-  channels <- readBin(fileR,"integer",size=2)
-  rate     <- readBin(fileR,"integer")
-              readBin(fileR,"integer",n=6,size=1)
-  bits     <- readBin(fileR,"integer",size=2)
-              readBin(fileR,"integer",n=4,size=1)
-  Length   <- readBin(fileR,"integer")
+
+  if(readChar(fileR, nchars=4) != 'RIFF')
+    stop("File is not RIFF format.")
+  readBin(fileR, "integer", n = 4, size = 1)
+  if(readChar(fileR, nchars=4) != 'WAVE')
+    stop("File is not WAVE format.")
+
+              readBin(fileR,"integer",n=10,size=1)
+  channels <- readBin(fileR,"integer",     size=2, endian='little')
+  rate     <- readBin(fileR,"integer",     size=4, endian='little')
+              readBin(fileR,"integer",n= 6,size=1)
+  bits     <- readBin(fileR,"integer",     size=2, endian='little')
+              readBin(fileR,"integer",n= 4,size=1)
+  Length   <- readBin(fileR,"integer",     size=4, endian='little')
   if (bits==8)
-      data <- readBin(fileR,"integer",n=Length  ,size=1,signed=FALSE)
+      data <- readBin(fileR,"integer",n=Length  ,size=1,signed=FALSE, endian='little')
   else
-      data <- readBin(fileR,"integer",n=Length/2,size=2,signed=TRUE )
+      data <- readBin(fileR,"integer",n=Length/2,size=2,signed=TRUE , endian='little')
   close(fileR)
 
   if (bits==8)
@@ -161,23 +171,23 @@ saveSample <- function(s,filename,overwrite=FALSE){
   dataLength <- length(data)*bits(s)/8
 
   fileW <- file(filename,"wb")
-  writeChar("RIFF",fileW,eos=NULL)                           # "RIFF"
+  writeChar("RIFF",fileW,eos=NULL)                                            # "RIFF"
   close(fileW)
 
   fileA <- file(filename,"ab")
-  writeBin(as.integer(36+dataLength),fileA)                  # number of following bytes
-  writeChar("WAVEfmt ",fileA,eos=NULL)                       # "WAVE"; "fmt "
-  writeBin(as.integer(16),fileA)                             # always 16
-  writeBin(as.integer(1),fileA,size=2)                       # always 1
-  writeBin(as.integer(channels(s)),fileA,size=2)             # 1=mono / 2=stereo
-  writeBin(as.integer(rate(s)),fileA)                        # sample rate
-  writeBin(as.integer(rate(s)*channels(s)*bits(s)/8),fileA)  # bytes/second
-  writeBin(as.integer(channels(s)*bits(s)/8),fileA,size=2)   # bytes/sample
-  writeBin(as.integer(bits(s)),fileA,size=2)                 # bits/sample
+  writeBin(as.integer(36+dataLength),fileA,endian='little')                   # number of following bytes
+  writeChar("WAVEfmt ",fileA,eos=NULL)                                        # "WAVE"; "fmt "
+  writeBin(as.integer(16),fileA, endian='little')                             # always 16
+  writeBin(as.integer(1),fileA,size=2, endian='little')                       # always 1
+  writeBin(as.integer(channels(s)),fileA,size=2, endian='little')             # 1=mono / 2=stereo
+  writeBin(as.integer(rate(s)),fileA, endian='little')                        # sample rate
+  writeBin(as.integer(rate(s)*channels(s)*bits(s)/8),fileA, endian='little')  # bytes/second
+  writeBin(as.integer(channels(s)*bits(s)/8),fileA,size=2, endian='little')   # bytes/sample
+  writeBin(as.integer(bits(s)),fileA,size=2, endian='little')                 # bits/sample
 
-  writeChar("data",fileA,eos=NULL)                           # "data"
-  writeBin(as.integer(dataLength),fileA)                     # length of data in bytes
-  writeBin(as.integer(data),fileA,size=bits(s)/8)            # data
+  writeChar("data",fileA,eos=NULL)                                            # "data"
+  writeBin(as.integer(dataLength),fileA, endian='little')                     # length of data in bytes
+  writeBin(as.integer(data),fileA,size=bits(s)/8, endian='little')            # data
   close(fileA)
 }
 
@@ -490,75 +500,75 @@ fitSampleParameters <- function(s1,s2){
 #                    binary operations: +, *, /, append
 #=========================================================================
 
-Ops.Sample <- function(s1,s2){
+Ops.Sample <- function(e1,e2){
   if (.Generic=="+"){
-    if (is.null(class(s1)) || is.null(class(s2)) || class(s1)!="Sample" || class(s2)!="Sample")
+    if (is.null(class(e1)) || is.null(class(e2)) || class(e1)!="Sample" || class(e2)!="Sample")
       stop("Arguments must be of class 'Sample'.")
-    s <- fitSampleParameters(s1,s2)
-    s1 <- s[[1]]
-    s2 <- s[[2]]
+    s <- fitSampleParameters(e1,e2)
+    e1 <- s[[1]]
+    e2 <- s[[2]]
 
-    m <- max(sampleLength(s1),sampleLength(s2))
-    s1 <- setSampleLength(s1,m)
-    s2 <- setSampleLength(s2,m)
+    m <- max(sampleLength(e1),sampleLength(e2))
+    e1 <- setSampleLength(e1,m)
+    e2 <- setSampleLength(e2,m)
 
-    sound(s1) <- sound(s1) + sound(s2)
+    sound(e1) <- sound(e1) + sound(e2)
 
-    return(s1)
+    return(e1)
   }
 
   if (.Generic=="-"){
-    if (missing(s2)){
-      sound(s1) <- -sound(s1)
-      return(s1)
+    if (missing(e2)){
+      sound(e1) <- -sound(e1)
+      return(e1)
     }
-    else return(s1+(-s2))
+    else return(e1+(-e2))
   }
 
   if (.Generic=="*"){
-    if (mode(s2)=="numeric") return(s2*s1)
-    else if (mode(s1)=="numeric"){
-      sound(s2) <- s1*sound(s2)
-      return(s2)
+    if (mode(e2)=="numeric") return(e2*e1)
+    else if (mode(e1)=="numeric"){
+      sound(e2) <- e1*sound(e2)
+      return(e2)
     }
-    else if (!is.null(class(s1)) && !is.null(class(s2)) && class(s1)=="Sample" && class(s2)=="Sample"){
-      s <- fitSampleParameters(s1,s2)
-      s1 <- s[[1]]
-      s2 <- s[[2]]
+    else if (!is.null(class(e1)) && !is.null(class(e2)) && class(e1)=="Sample" && class(e2)=="Sample"){
+      s <- fitSampleParameters(e1,e2)
+      e1 <- s[[1]]
+      e2 <- s[[2]]
 
-      m <- max(sampleLength(s1),sampleLength(s2))
-      sampleLength(s1) <- m
-      sampleLength(s2) <- m
+      m <- max(sampleLength(e1),sampleLength(e2))
+      sampleLength(e1) <- m
+      sampleLength(e2) <- m
 
-      sound(s1) <- sound(s1) * sound(s2)
+      sound(e1) <- sound(e1) * sound(e2)
 
-      return(s1)
+      return(e1)
     }
     else stop("Arguments must be numeric or of class 'Sample'.")
   }
 
   if (.Generic=="/"){
-    if(mode(s2)!="numeric") stop("Second argument must be numeric.")
-    else return(1/s2*s1)
+    if(mode(e2)!="numeric") stop("Second argument must be numeric.")
+    else return(1/e2*e1)
   }
 }
 
-sum.Sample <- function(s1,s2,...){
-  sampletest <- is.Sample(s1,argname="")
+sum.Sample <- function(e1,e2,...){
+  sampletest <- is.Sample(e1,argname="")
   if (!sampletest$test) stop(sampletest$error)
-  if(missing(s2)) {
-    return(loadSample(s1,filecheck=FALSE))
+  if(missing(e2)) {
+    return(loadSample(e1,filecheck=FALSE))
   }
-  return(loadSample(s1,filecheck=FALSE)+sum.Sample(s2,...))
+  return(loadSample(e1,filecheck=FALSE)+sum.Sample(e2,...))
 }
 
-prod.Sample <- function(s1,s2,...){
-  sampletest <- is.Sample(s1,argname="")
+prod.Sample <- function(e1,e2,...){
+  sampletest <- is.Sample(e1,argname="")
   if (!sampletest$test) stop(sampletest$error)
-  if(missing(s2)) {
-    return(loadSample(s1,filecheck=FALSE))
+  if(missing(e2)) {
+    return(loadSample(e1,filecheck=FALSE))
   }
-  return(loadSample(s1,filecheck=FALSE)*prod.Sample(s2,...))
+  return(loadSample(e1,filecheck=FALSE)*prod.Sample(e2,...))
 }
 
 appendSample <- function(s1,s2,...){

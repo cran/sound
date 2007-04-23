@@ -11,21 +11,21 @@
 These functions apply the basic operations pointwise to the waveforms of the samples.
 }
 \synopsis{
-Ops.Sample(s1,s2)
-sum.Sample(s1,s2,...)
-prod.Sample(s1,s2,...)
+Ops.Sample(e1,e2)
+sum.Sample(e1,e2,...)
+prod.Sample(e1,e2,...)
 }
-\usage{s1 + s2
-s1 - s2
-s1 * s2
+\usage{e1 + e2
+e1 - e2
+e1 * e2
 const * s
 s * const
 s / const
-sum.Sample(s1, s2, ...)
-prod.Sample(s1, s2, ...)
+sum.Sample(e1, e2, ...)
+prod.Sample(e1, e2, ...)
 }
 \arguments{
-  \item{s, s1, s2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }
+  \item{s, e1, e2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }
   \item{const}{ a double. }
 }
 \details{
@@ -35,7 +35,7 @@ If the samples have different sample parameters (bits, rate and channels), the s
 
 Be careful to make sure that the resulting waveform does not exceed the interval [-1,1] when it is played or saved to disk, otherwise you will lose information and hear cracks in the sound. To avoid this, you can use \code{const * s} or the \code{\link{normalize}} command.
 
-In \code{prod} and \code{sum} also the names of wavefiles can be used. Other forms like \code{s1+s2} do not accept filenames as arguments. If the first argument \code{s1} is a filename, the explicit forms \code{sum.Sample} and \code{prod.Sample} must be used.
+In \code{prod} and \code{sum} also the names of wavefiles can be used. Other forms like \code{e1+e2} do not accept filenames as arguments. If the first argument \code{e1} is a filename, the explicit forms \code{sum.Sample} and \code{prod.Sample} must be used.
 }
 
 \value{
@@ -47,9 +47,9 @@ In \code{prod} and \code{sum} also the names of wavefiles can be used. Other for
 \seealso{ \code{\link{normalize}}, \code{\link{center}} }
 
 \examples{\dontrun{
-s1 <- Sine(440,1)
-s2 <- Sine(220,1)
-play((s1+s2)/2) # both samples at a time
+e1 <- Sine(440,1)
+e2 <- Sine(220,1)
+play((e1+e2)/2) # both samples at a time
 
 play(Sine(440,1)*Sine(5,1)) # vibrato
 }}

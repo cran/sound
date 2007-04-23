@@ -5,9 +5,6 @@
 \description{
   Cut a part out of a Sample object.
 }
-\synopsis{
-cutSample(s, start, end)
-}
 \usage{
 cutSample(s, start, end)
 \S3method{[}{Sample}(s,i)
