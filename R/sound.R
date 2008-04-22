@@ -18,8 +18,7 @@ setWavPlayer <- function(command=NULL){
         status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/testsample.wav",sep="")))
       }
       else {
-        status <- try(system(paste(trycommand," ",.path.package(package
-  = "sound"),"/testsample.wav",sep=""), ignore = TRUE))
+        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep=""), ignore = TRUE))
       }
       options(op)
       if (!inherits(status,"try-error")) {
@@ -71,10 +70,10 @@ findWavPlayer <- function(){
 as.Sample <- function(sound,rate=44100,bits=16){
   if (mode(sound)!="numeric")
     stop("Argument 'sound' must be a numeric vectors.")
-  if (mode(rate)!="numeric" || rate<1000 || rate>48000)
+  if (mode(rate)!="numeric" || rate<1000 || rate>192000)
     stop("Parameter 'rate' must be an number between 1000 and 48000.")
-  if (mode(bits)!="numeric" || bits!=8 && bits!=16)
-    stop("Parameter 'bits' must be 8 or 16.")
+  if (mode(bits)!="numeric" || bits!=8 && bits!=16 && bits!=24)
+    stop("Parameter 'bits' must be 8, 16 or 24.")
   if (is.null(dim(sound)))
     sound <- matrix(sound,nrow=1)
   if (dim(sound)[1]>2){
@@ -133,15 +132,17 @@ loadSample <- function(filename,filecheck=TRUE){
               readBin(fileR,"integer",n= 4,size=1)
   Length   <- readBin(fileR,"integer",     size=4, endian='little')
   if (bits==8)
-      data <- readBin(fileR,"integer",n=Length  ,size=1,signed=FALSE, endian='little')
-  else
-      data <- readBin(fileR,"integer",n=Length/2,size=2,signed=TRUE , endian='little')
-  close(fileR)
+      data <- readBin(fileR,"integer",n=Length  ,size=1,signed=FALSE, endian='little')/128-1
+  if (bits==16)
+      data <- readBin(fileR,"integer",n=Length/2,size=2,signed=TRUE , endian='little')/32768
+  if (bits==24) {
+      data <- readBin(fileR,"integer",n=Length,size=1,signed=FALSE , endian='little')
+      indices <- 3*1:(Length/3)
+      data <- data[indices-2]/8388608 + data[indices-1]/32768 + data[indices]/128
+      data <- data-2*(data>=1)
+  }
 
-  if (bits==8)
-    data   <- data/128-1
-  else
-    data   <- data/32768
+  close(fileR)
 
   if (channels==2)
     dim(data) <- c(channels,length(data)/channels)
@@ -165,10 +166,20 @@ saveSample <- function(s,filename,overwrite=FALSE){
   if (channels(s)==1) {data<-sound(s)[1,]}
     else  {data <- array(sound(s),dim=c(1,2*sampleLength(s)))}
 
-  if (bits(s)==8) data <- data*127+128
-  else data <- data*32767
-
   dataLength <- length(data)*bits(s)/8
+
+  if (bits(s)==8)
+      data <- data*127+128
+  if (bits(s)==16)
+      data <- data*32767
+  if (bits(s)==24) {
+      data <- 128*(data + 2*(data<0))
+      hiByte <- floor(data)
+      data <- 256*(data-hiByte)
+      midByte <- floor(data)
+      lowByte <- floor((data-midByte)*256)
+      data <- matrix(matrix(c(lowByte,midByte,hiByte),3,length(data),byrow=TRUE),1,3*length(data))
+  }
 
   fileW <- file(filename,"wb")
   writeChar("RIFF",fileW,eos=NULL)                                            # "RIFF"
@@ -187,7 +198,10 @@ saveSample <- function(s,filename,overwrite=FALSE){
 
   writeChar("data",fileA,eos=NULL)                                            # "data"
   writeBin(as.integer(dataLength),fileA, endian='little')                     # length of data in bytes
-  writeBin(as.integer(data),fileA,size=bits(s)/8, endian='little')            # data
+  if (bits(s)==8 || bits(s)==16)                                              # data
+      writeBin(as.integer(data),fileA,size=bits(s)/8, endian='little')
+  if (bits(s)==24)
+      writeBin(as.integer(data),fileA,size=1, endian='little')
   close(fileA)
 }
 

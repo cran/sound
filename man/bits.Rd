@@ -12,20 +12,22 @@ setBits(s,value)
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{value}{ the number of bits per sample, 8 or 16. }
+  \item{value}{ the number of bits per sample: 8, 16 or 24. }
 }
 \details{
 The replacement form can be used to reset the sampling quality of a Sample object, that is the number of bits per sample (8 or 16). Here, filenames are not accepted.
 }
 \value{
-  For \code{bits}, the bits parameter (number of bits per sample) of the Sample object, 8 or 16.
+  For \code{bits}, the bits parameter (number of bits per sample) of the Sample object (8, 16 or 24).
 
   For \code{setBits}, a Sample object with the new \code{bits} parameter. 
 }
 \author{ Matthias Heymann }
 \note{ Changing the sampling quality of a Sample object does not affect its actual data but only its \code{$bits} flag. The sampling quality is only used when a Sample object is played or saved to disk. Internally, \R always uses doubles for the waveform.
 
-An 8 bit sample needs only half the disk space but has less quality.
+An 8 bit sample needs only half the disk space compared to a 16 bit sample, but it has a lower sound quality.
+
+Note also that 24 bit samples cannot be played by every wav file player.
 }
 
 \seealso{ \code{\link{fitSampleParameters}} }

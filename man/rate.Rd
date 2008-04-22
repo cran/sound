@@ -12,7 +12,7 @@ setRate(s,value)
 }
 \arguments{
   \item{s}{ a Sample object, or a string giving the name of a wav file. }
-  \item{value}{ an integer between 1000 and 48000 giving the sampling rate. }
+  \item{value}{ an integer between 1000 and 192000 giving the sampling rate. }
 }
 \details{
 The replacement form can be used to reset the sampling rate. Here, filenames are not accepted.
@@ -26,7 +26,7 @@ Note that changing the sampling rate of a Sample object affects the waveform of 
 }
 \author{ Matthias Heymann }
 
-\note{ Common sampling rates are between 8000 and 44100 (CD quality). The sampling rate of DAT recorders is 48000. Not every rate is guaranteed to be supported by every wav file player.
+\note{ Common sampling rates are between 8000 and 44100 (CD quality). Higher-quality recorders typically work with sampling rates of 48000, 92000 or 192000. Not every rate is guaranteed to be supported by every wav file player.
 
 Future versions may use a different algorithm for sampling rate conversion to achieve a better sound quality for the returned sample.
 }
