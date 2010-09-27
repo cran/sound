@@ -11,9 +11,9 @@
 These functions apply the basic operations pointwise to the waveforms of the samples.
 }
 \synopsis{
-Ops.Sample(e1,e2)
-sum.Sample(e1,e2,...)
-prod.Sample(e1,e2,...)
+\method{Ops}{Sample}(e1,e2)
+\method{sum}{Sample}(e1,e2,...)
+\method{prod}{Sample}(e1,e2,...)
 }
 \usage{e1 + e2
 e1 - e2
@@ -21,8 +21,8 @@ e1 * e2
 const * s
 s * const
 s / const
-sum.Sample(e1, e2, ...)
-prod.Sample(e1, e2, ...)
+\method{sum}{Sample}(e1, e2, ...)
+\method{prod}{Sample}(e1, e2, ...)
 }
 \arguments{
   \item{s, e1, e2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }

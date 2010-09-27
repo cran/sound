@@ -18,7 +18,7 @@ setWavPlayer <- function(command=NULL){
         status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/testsample.wav",sep="")))
       }
       else {
-        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep=""), ignore = TRUE))
+        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep=""), ignore.stderr = TRUE))
       }
       options(op)
       if (!inherits(status,"try-error")) {

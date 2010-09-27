@@ -4,7 +4,7 @@
 \description{
   Display the basic information about a Sample object or a wav file.
 }
-\usage{print.Sample(x,\dots)
+\usage{\method{print}{Sample}(x,\dots)
 }
 \arguments{
   \item{x}{ a Sample object, or a string giving the name of a wav file. }
