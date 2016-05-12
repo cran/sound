@@ -1,8 +1,8 @@
-977fc93a4f61a3fc5977f31745411946 *DESCRIPTION
-9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
-86b460d0396cb0b10a8f0262da4e0be1 *R/sound.R
+4dccafa6c682ca800184e01afcb8b18f *DESCRIPTION
+0b85f43b6161b765ae7f2d0ff53afd71 *NAMESPACE
+67b3429b08d93c56969ebdbdb4fc6df3 *R/sound.R
 4ca681147f7d55321b896749196e9909 *inst/testsample.wav
-c68d94591a6300babb2e6c39af9deb04 *man/Ops.Sample.Rd
+56b5574eba0de61fe7ab6c5f65625e8c *man/Ops.Sample.Rd
 eb94ecc28d0bc66f7834a9e6cd334733 *man/Sample.Rd
 4577d541a0cd350a5c9c1b89e144a6bc *man/Sine.Rd
 4ec5f2c57982afc18b467a9c3dab8e35 *man/WavPlayer.Rd

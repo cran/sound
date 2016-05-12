@@ -10,23 +10,14 @@
 \description{
 These functions apply the basic operations pointwise to the waveforms of the samples.
 }
-\synopsis{
-\method{Ops}{Sample}(e1,e2)
-\method{sum}{Sample}(e1,e2,...)
-\method{prod}{Sample}(e1,e2,...)
-}
 \usage{e1 + e2
+\method{Ops}{Sample}(e1,e2)
 e1 - e2
-e1 * e2
-const * s
-s * const
-s / const
 \method{sum}{Sample}(e1, e2, ...)
 \method{prod}{Sample}(e1, e2, ...)
 }
 \arguments{
-  \item{s, e1, e2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }
-  \item{const}{ a double. }
+  \item{e1, e2, \dots}{ For \code{+},\code{-},\code{*},\code{/}, Sample objects. For \code{prod.Sample} and \code{sum.Sample}, Sample objects or strings giving the names of wav files. }
 }
 \details{
 The sum of two Sample objects corresponds to the sound when both samples are played at a time. The product of two samples causes an effect called ringmodulation, but it can also be used to add some vibrato to a sound (see the examples).
@@ -47,10 +38,16 @@ In \code{prod} and \code{sum} also the names of wavefiles can be used. Other for
 \seealso{ \code{\link{normalize}}, \code{\link{center}} }
 
 \examples{\dontrun{
+const <- 2.0
 e1 <- Sine(440,1)
 e2 <- Sine(220,1)
 play((e1+e2)/2) # both samples at a time
-
 play(Sine(440,1)*Sine(5,1)) # vibrato
+
+e1 * e2
+const * e1
+e1 * const
+e2 / const
+
 }}
 \keyword{ manip }

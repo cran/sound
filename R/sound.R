@@ -1,4 +1,4 @@
-.First.lib <- function(lib, pkg) {
+.onLoad <- function(libname, pkgname){
   if (is.null(WavPlayer()))
     setWavPlayer()
 }
@@ -15,10 +15,11 @@ setWavPlayer <- function(command=NULL){
     for (trycommand in command){
       op <- options(warn=2)
       if (trycommand=="mplay32 /play") {
-        status <- try(system(paste(trycommand," /close ",.path.package(package = "sound"),"/testsample.wav",sep="")))
+        status <- try(system(paste(trycommand," /close ",path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep="")))
       }
       else {
-        status <- try(system(paste(trycommand," ",.path.package(package = "sound"),"/testsample.wav",sep=""), ignore.stderr = TRUE))
+      
+        status <- try(system(paste(trycommand," ",path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep=""), ignore.stderr = TRUE))
       }
       options(op)
       if (!inherits(status,"try-error")) {
@@ -53,11 +54,10 @@ WavPlayer <- function() {
 
 findWavPlayer <- function(){
   command <- switch(R.Version()$os,
-	            "linux-gnu"   = c("play","playwave"),
- 	            "Win32"       = "mplay32 /play",
-                    "mingw32"     = "mplay32 /play", 
-		    "darwin8.6.0" = "open -a 'QuickTime Player'",
-		    "darwin8.6.1" = "open -a 'QuickTime Player'",
+	            "linux-gnu"   = c("aplay","playwave"),
+ 	            "Win32"       = "mplay32 /play", 
+		    	"darwin8.6.0" = "open -a 'QuickTime Player'",
+		    	"darwin8.6.1" = "open -a 'QuickTime Player'",
                     default     = NULL)
   if (is.null(command)) warning("No standard wav player known for your system.\n")
   return(command)
