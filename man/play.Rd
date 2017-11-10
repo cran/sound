@@ -17,7 +17,11 @@
 If \code{s} is a Sample object, it will be saved into a temporary folder before it is played. The temporary file will only be deleted afterwards if \code{stay=FALSE}.
 }
 
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \examples{\dontrun{
 s <- Sine(440,1)

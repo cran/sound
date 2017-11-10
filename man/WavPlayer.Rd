@@ -19,13 +19,11 @@ setWavPlayer(command=NULL)
 }
 \details{ The \code{\link{play}} command makes a system call of the form \code{"}command\code{ }wavfile\code{.wav"}, where 'command' is the string returned by \code{WavPlayer()}.
 
-The default commands are \code{'mplay32 /play'} (calling the Windows media player) for Win32-systems and \code{'play'} and \code{'playwave'} for Linux systems. Other commands will be added in future versions of this package.
+The default commands are \code{'mplay32 /play'} (calling the Windows media player) for Win32-systems and \code{'aplay'} and \code{'mplayer'} for Linux systems. Other commands will be added in future versions of this package.
 
-While the Windows Media player is included in the standard Windows installation, playwave might have to be installed manually. Under RedHat Linux playwave is part of the SDL\_mixer package. To download it, go to \url{http://www.libsdl.org/projects/SDL_mixer}.
+Unfortunately for Windows 7/8/10 no command line tool for playing wav-files is included into the os. However, a suitable tool like \code{'wv_player.exe'} can be installed. To download it, go to \url{http://www.webxpace.com/software/}.
 
-But any other program that provides a system call of the above form to play wav files is also fine. Please report additional play commands to the author (send an email to \email{mail@MatthiasHeymann.de}) so that they can be recognized automatically in future versions of this package.
-
-\code{setWavPlayer} is called directly after loading the package.
+But any other program that provides a system call of the above form to play wav files is also fine. Please report additional play commands to the maintainer so that they can be recognized automatically in future versions of this package.
 
 When \code{setWavPlayer} is called, it tries to play an empty wav file, using the new command(s). If it fails, no changes are made.
 }
@@ -34,7 +32,11 @@ When \code{setWavPlayer} is called, it tries to play an empty wav file, using th
 
   \code{findWavPlayer} returns the default commands for your system, or \code{NULL}, if no command is known for your system.
 }
-\author{ Matthias Heymann}
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{play}} for playing Sample objects or wav files. }
 

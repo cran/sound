@@ -12,7 +12,11 @@
   \item{ylab}{ For mono Sample objects as usual. For stereo Sample objects, \code{ylab} can be a vector of two strings to distinguish the y-labels for the left and the right channel. If \code{ylab=NULL}, the presets are used, that is \code{"waveform"} for mono samples and \code{c("left","right")} for stereo samples.}
   \item{\dots}{ further graphical parameters. }
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ Use \code{plot(s[interval])} to plot parts of \code{s} only (see examples).
 

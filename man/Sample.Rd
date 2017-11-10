@@ -39,7 +39,11 @@ The \code{is.Sample} command is used by several other routines that allow both S
   \item{error }{a string with one of the messages "Filename must have the extension .wav.", "File not found.", "No read permission for this file.", or "Argument "+ argname + "must be a Sample object or the name of a wav file." If \code{test=TRUE}, this list entry doesn't exist.}
 }
 
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{stereo}} for creating a stereo Sample object from two mono Sample objects, \code{\link{loadSample}} for loading a wav file and turning it into a Sample object, \code{\link{saveSample}} for saving a Sample object as a wav file, \code{\link{sound}}, \code{\link{bits}}, \code{\link{rate}}, \code{\link{channels}}, \code{\link{sampleLength}} and \code{\link{duration}} for access to the basic parameters of a Sample object.
 }

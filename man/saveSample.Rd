@@ -11,7 +11,11 @@
   \item{filename}{ a string giving the path and the name of the destination file. }
   \item{overwrite}{ logical. If \code{FALSE} and \code{filename} already exists, an error will be reported. Otherwise the old file will be deleted. }
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{loadSample}} }
 

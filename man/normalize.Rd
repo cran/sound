@@ -15,7 +15,11 @@ Use this command before saving or playing a Sample object to avoid cracks in the
 \value{
   a Sample object with the specified maximum absolut value of the waveform.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{Ops.Sample}}, \code{\link{center}} }
 

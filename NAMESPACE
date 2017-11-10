@@ -12,5 +12,5 @@ S3method(sum, Sample)
 S3method(prod, Sample)
 S3method(print, Sample)
 S3method("sampleLength<-", Sample)
-
+S3method("[", Sample)
 

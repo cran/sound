@@ -29,7 +29,11 @@ Noise(dur, rate=44100, bits=16, channels=1)
 \value{
   a Sample object.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{as.Sample}}, \code{\link{loadSample}}, \code{\link{nullSample}} }
 

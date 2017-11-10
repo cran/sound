@@ -21,7 +21,11 @@ Only the intersection of [\code{start},\code{end}] with [0,\code{duration(s)}] i
 \value{
   the specified part of the given sample as a new Sample object.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{sound}} for direct access to the waveform matrix,
 

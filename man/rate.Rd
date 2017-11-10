@@ -24,7 +24,11 @@ Note that changing the sampling rate of a Sample object affects the waveform of 
 
   For \code{setRate}, a Sample object with the new sampling rate.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ Common sampling rates are between 8000 and 44100 (CD quality). Higher-quality recorders typically work with sampling rates of 48000, 92000 or 192000. Not every rate is guaranteed to be supported by every wav file player.
 

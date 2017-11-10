@@ -14,7 +14,11 @@
 \value{
   a Sample object.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ Future versions may use a special NULLSample flag instead of using a sample of length 1. }
 

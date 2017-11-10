@@ -17,7 +17,11 @@ If \code{s} is a mono sample, it will be returned as it is.
 \value{
   a Sample object containing the left or the right channel of \code{s}.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{stereo}} for creating a stereo Sample object from two mono samples. }
 

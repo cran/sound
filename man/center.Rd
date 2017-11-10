@@ -15,7 +15,11 @@ For a stereo Sample object, both channels are treated separately.
 \value{
   a Sample object with zero as the mean of each channel's waveform.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{normalize}} }
 

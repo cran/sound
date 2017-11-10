@@ -20,7 +20,11 @@ Note that this transformation changes the actual data of the sample. Since pitch
   a Sample object.
 }
 
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ Future versions of this command may use a different algorithm to increase the quality of the returned sample. }
 

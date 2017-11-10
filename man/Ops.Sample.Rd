@@ -33,7 +33,11 @@ In \code{prod} and \code{sum} also the names of wavefiles can be used. Other for
   a Sample object. 
 }
 
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{normalize}}, \code{\link{center}} }
 

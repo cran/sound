@@ -24,7 +24,11 @@ If a mono sample is transformed into a stereo sample, each channel of the stereo
 
   For \code{setChannels}, a Sample object with the new \code{channels} parameter. 
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{fitSampleParameters}} }
 

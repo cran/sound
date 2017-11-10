@@ -24,7 +24,11 @@ If a Sample object is shortened, extra values are discarded. When a Sample objec
 
   For \code{setDuration}, a Sample object with the new duration. 
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{sampleLength}} }
 

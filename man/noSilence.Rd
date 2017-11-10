@@ -18,7 +18,11 @@ For stereo samples, it is checked if the values of both channels are silence bef
 \value{
   a Sample object without those parts at the start and at the end of the original sample that are below the specified noise level.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{cutSample}} }
 

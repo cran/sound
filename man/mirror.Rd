@@ -15,7 +15,11 @@ If \code{s} is a mono sample, it will be returned as it is.
 \value{
   a Sample object, with the left and the right channel of \code{s} interchanged.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{panorama}} for a command with more parameters, \code{\link{left}} and \code{\link{right}} for access to single channels of a sample. }
 

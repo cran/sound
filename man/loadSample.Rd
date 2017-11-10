@@ -16,7 +16,11 @@ All kinds of wav files are supported: mono / stereo, 8 / 16 bits per sample, 100
 \value{
   the Sample object that is equivalent to the wav file.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ \code{filename} can also be a Sample object. In this case, the same object will be returned immediately. This can be useful when writing functions that accept both Sample objects and the names of a wav file as an argument. See \code{\link{is.Sample}} for an example. }
 

@@ -12,7 +12,11 @@
 \value{
   a Sample object with the same parameters but with the sound played backwards.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \examples{\dontrun{
 waveform <- 2*((seq(0,80,length=88200)\%\%1^2)-.5)

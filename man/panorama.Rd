@@ -18,7 +18,11 @@ If \code{pan<0}, the left and the right channel are interchanged afterwards.
 \value{
   a Sample object with the transformed panorama.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{mirror}} for \code{pan=-50}, \code{\link{left}} and \code{\link{right}} for access to single channels of the sample. }
 

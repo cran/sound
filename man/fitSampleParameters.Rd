@@ -14,7 +14,11 @@
 \value{
   a list containing the two transformed Samples as components.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \note{ This routine is called before certain commands such as \code{\link{sum.Sample}} or \code{\link{appendSample}} are applied to Sample objects with different parameters. }
 

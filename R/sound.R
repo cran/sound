@@ -1,8 +1,3 @@
-.onLoad <- function(libname, pkgname){
-  if (is.null(WavPlayer()))
-    setWavPlayer()
-}
-
 setWavPlayer <- function(command=NULL){
   flag <- command
   if (is.null(flag)) command <- findWavPlayer()
@@ -15,11 +10,17 @@ setWavPlayer <- function(command=NULL){
     for (trycommand in command){
       op <- options(warn=2)
       if (trycommand=="mplay32 /play") {
-        status <- try(system(paste(trycommand," /close ",path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep="")))
+        status <- try(
+          system2(paste(trycommand," /close ", sep=""),
+          	paste(path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep=""),
+          	stdout=NULL)
+        )
       }
       else {
-      
-        status <- try(system(paste(trycommand," ",path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep=""), ignore.stderr = TRUE))
+        status <- try(
+          system2(trycommand, paste(path.package(package = "sound", quiet=TRUE),"/testsample.wav",sep=""),
+          stdout=NULL)
+      )
       }
       options(op)
       if (!inherits(status,"try-error")) {
@@ -54,11 +55,11 @@ WavPlayer <- function() {
 
 findWavPlayer <- function(){
   command <- switch(R.Version()$os,
-	            "linux-gnu"   = c("aplay","playwave"),
- 	            "Win32"       = "mplay32 /play", 
-		    	"darwin8.6.0" = "open -a 'QuickTime Player'",
-		    	"darwin8.6.1" = "open -a 'QuickTime Player'",
-                    default     = NULL)
+	         "linux-gnu"    = c("aplay","mplayer"),
+ 	         "Win32"        = "mplay32 /play",
+ 	         "darwin16.7.0" = "afplay",
+		    	"darwin17.2.0" = "afplay",
+            default        = NULL)
   if (is.null(command)) warning("No standard wav player known for your system.\n")
   return(command)
 }
@@ -222,11 +223,13 @@ play.default <- function(s,stay=FALSE,command=WavPlayer()){
   sampletest <- is.Sample(s,argname="")
   if (!sampletest$test) stop(sampletest$error)
   if (stay==FALSE && command=="mplay32 /play") command <- paste(command,"/close")
-  system(paste(command,s))
+  system2(command,s)
   invisible(NULL)
 }
 
 play.Sample <- function(s,stay=FALSE,command=WavPlayer()){
+  if (is.null(command)) setWavPlayer()
+  command <- WavPlayer()
   if (is.null(command)) {
     stop(paste("No wav file player selected.\n",
                "To play sounds you need to select a wav file player first.\n",

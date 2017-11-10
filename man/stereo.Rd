@@ -21,7 +21,11 @@ If the samples have different sample parameters (bits, rate and channels), the c
 \value{
   a stereo Sample object.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{left}}, \code{\link{right}}, \code{\link{as.Sample}}, \code{\link{panorama}} }
 

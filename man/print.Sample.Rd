@@ -10,7 +10,11 @@
   \item{x}{ a Sample object, or a string giving the name of a wav file. }
   \item{\dots}{ further parameters, not used at the moment. }
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{plot.Sample}} for plotting the waveform of a sample. }
 

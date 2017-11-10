@@ -24,7 +24,12 @@ The waveform of a Sample object might exceed this interval during calculations. 
 \value{
   the waveform matrix of the sample.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
+
 
 \seealso{\code{\link{as.Sample}}}
 

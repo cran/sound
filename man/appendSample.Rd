@@ -15,7 +15,11 @@ If the samples have different sample parameters (bits, rate and channels), the c
 \value{
   a Sample object with the samples played one after the other.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{cutSampleEnds}} to avoid cracks between two appended samples,
 

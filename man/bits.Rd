@@ -22,7 +22,11 @@ The replacement form can be used to reset the sampling quality of a Sample objec
 
   For \code{setBits}, a Sample object with the new \code{bits} parameter. 
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 \note{ Changing the sampling quality of a Sample object does not affect its actual data but only its \code{$bits} flag. The sampling quality is only used when a Sample object is played or saved to disk. Internally, \R always uses doubles for the waveform.
 
 An 8 bit sample needs only half the disk space compared to a 16 bit sample, but it has a lower sound quality.

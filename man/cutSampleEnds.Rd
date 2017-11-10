@@ -18,7 +18,11 @@ Currently, only channel 1 is used to determine which parts to drop. Hence in ste
 \value{
   a Sample object.
 }
-\author{ Matthias Heymann }
+\author{
+Author: \packageAuthor{sound}
+
+Maintainer: \packageMaintainer{sound}
+}
 
 \seealso{ \code{\link{cutSample}}, \code{\link{appendSample}} }
 
