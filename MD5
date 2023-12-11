@@ -1,7 +1,7 @@
-a0b8293c2376516015cf4936dc910bfe *DESCRIPTION
-34965a82da1388a29e57a972c8e71758 *NAMESPACE
-ee88a9c2f9d271bdae2ce79dab168b6a *R/sound.R
-78b6fee00daf410cc82f75c7cef1de64 *build/partial.rdb
+d50deb2e2c9142868bc719a1d8f5cb60 *DESCRIPTION
+26d747467002c8f74b34923a804a1afa *NAMESPACE
+64cf9461c58bdfdabe030bc14b832390 *R/sound.R
+f442160c4741be78f0fb8cf3f0b98c22 *build/partial.rdb
 4ca681147f7d55321b896749196e9909 *inst/testsample.wav
 30052391510f11b35fbd4d974f682857 *man/Ops.Sample.Rd
 2027d857ec1cd76e861b3cae0c029db2 *man/Sample.Rd
@@ -30,5 +30,6 @@ d465b4cbd53a23f8e0bc7e2e299f1c10 *man/play.Rd
 ed1924142671a1997018c59edd721d73 *man/reverse.Rd
 c811459f894c0d91a371435faaf5fa2d *man/sampleLength.Rd
 c1f6e31141a0db5ac5d63a0f319554e0 *man/saveSample.Rd
-aae4e3682d0e009f95aa4b32336b12e5 *man/sound.Rd
-d422a024878d89c84778d3598c72b96d *man/stereo.Rd
+c4d7e5a34f632f445ee56442485b8911 *man/sound-package.Rd
+4d5ac0a55aa3fb46d48c2a8275253245 *man/sound.Rd
+66a882458413ae03d7c317dc1661b260 *man/stereo.Rd
